@@ -4,20 +4,27 @@
 #
 Name     : R-remotes
 Version  : 2.0.2
-Release  : 6
+Release  : 7
 URL      : https://cran.r-project.org/src/contrib/remotes_2.0.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/remotes_2.0.2.tar.gz
 Summary  : R Package Installation from Remote Repositories, Including
 Group    : Development/Tools
 License  : GPL-2.0+ MIT
-Requires: R-rlang
+Requires: R-assertthat
+Requires: R-cli
+Requires: R-markdown
+Requires: R-withr
+BuildRequires : R-assertthat
+BuildRequires : R-cli
+BuildRequires : R-markdown
 BuildRequires : R-rlang
+BuildRequires : R-withr
 BuildRequires : buildreq-R
 
 %description
-'BitBucket', or plain 'subversion' or 'git' repositories. This package
-    is a lightweight replacement of the 'install_*' functions in 'devtools'.
-    Indeed most of the code was copied over from 'devtools'.
+# remotes
+> Install R Packages from GitHub, BitBucket, or other local or remote
+> repositories
 
 %prep
 %setup -q -c -n remotes
@@ -27,10 +34,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1540917509
+export SOURCE_DATE_EPOCH=1552843914
 
 %install
-export SOURCE_DATE_EPOCH=1540917509
+export SOURCE_DATE_EPOCH=1552843914
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -66,8 +73,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library remotes|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  remotes || :
 
 
 %files
@@ -97,3 +103,50 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/remotes/help/remotes.rdx
 /usr/lib64/R/library/remotes/html/00Index.html
 /usr/lib64/R/library/remotes/html/R.css
+/usr/lib64/R/library/remotes/tests/testthat.R
+/usr/lib64/R/library/remotes/tests/testthat/archives/foo.tar
+/usr/lib64/R/library/remotes/tests/testthat/archives/foo.tar.bz2
+/usr/lib64/R/library/remotes/tests/testthat/archives/foo.tar.gz
+/usr/lib64/R/library/remotes/tests/testthat/archives/foo.tbz
+/usr/lib64/R/library/remotes/tests/testthat/archives/foo.tgz
+/usr/lib64/R/library/remotes/tests/testthat/archives/foo.zip
+/usr/lib64/R/library/remotes/tests/testthat/archives/foo/DESCRIPTION
+/usr/lib64/R/library/remotes/tests/testthat/archives/foo/R/foo.R
+/usr/lib64/R/library/remotes/tests/testthat/archives/foo/configure
+/usr/lib64/R/library/remotes/tests/testthat/github-error-local.txt
+/usr/lib64/R/library/remotes/tests/testthat/github-error-travis.txt
+/usr/lib64/R/library/remotes/tests/testthat/helper.R
+/usr/lib64/R/library/remotes/tests/testthat/invalidpkg/DESCRIPTION
+/usr/lib64/R/library/remotes/tests/testthat/noremotes/DESCRIPTION
+/usr/lib64/R/library/remotes/tests/testthat/submodule/DESCRIPTION
+/usr/lib64/R/library/remotes/tests/testthat/submodule/NAMESPACE
+/usr/lib64/R/library/remotes/tests/testthat/test-bioc.R
+/usr/lib64/R/library/remotes/tests/testthat/test-cran.R
+/usr/lib64/R/library/remotes/tests/testthat/test-dcf.R
+/usr/lib64/R/library/remotes/tests/testthat/test-decompress.R
+/usr/lib64/R/library/remotes/tests/testthat/test-deps.R
+/usr/lib64/R/library/remotes/tests/testthat/test-devel.R
+/usr/lib64/R/library/remotes/tests/testthat/test-download.R
+/usr/lib64/R/library/remotes/tests/testthat/test-git.R
+/usr/lib64/R/library/remotes/tests/testthat/test-github.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install-bioc.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install-bitbucket.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install-cran.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install-deps.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install-dev.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install-git.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install-github.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install-gitlab.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install-local.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install-remote.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install-svn.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install-url.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install-version.R
+/usr/lib64/R/library/remotes/tests/testthat/test-install.R
+/usr/lib64/R/library/remotes/tests/testthat/test-json.R
+/usr/lib64/R/library/remotes/tests/testthat/test-package-deps.R
+/usr/lib64/R/library/remotes/tests/testthat/test-package.R
+/usr/lib64/R/library/remotes/tests/testthat/test-parse-git.R
+/usr/lib64/R/library/remotes/tests/testthat/test-submodule.R
+/usr/lib64/R/library/remotes/tests/testthat/test-system.R
+/usr/lib64/R/library/remotes/tests/testthat/test-utils.R

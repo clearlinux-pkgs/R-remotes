@@ -1,2 +1,6 @@
 2.0.2
+R-assertthat
+R-cli
+R-markdown
 R-rlang
+R-withr
