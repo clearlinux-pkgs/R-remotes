@@ -4,7 +4,7 @@
 #
 Name     : R-remotes
 Version  : 2.1.1
-Release  : 22
+Release  : 23
 URL      : https://cran.r-project.org/src/contrib/remotes_2.1.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/remotes_2.1.1.tar.gz
 Summary  : R Package Installation from Remote Repositories, Including
@@ -13,27 +13,28 @@ License  : GPL-2.0+
 BuildRequires : buildreq-R
 
 %description
-# remotes
-> Install R Packages from remote or local repositories,
-> including GitHub, GitLab, Bitbucket, and Bioconductor
+'Bitbucket', 'Bioconductor', or plain 'subversion' or 'git' repositories. 
+    This package provides the 'install_*' functions in 'devtools'. Indeed most 
+    of the code was copied over from 'devtools'.
 
 %prep
 %setup -q -c -n remotes
+cd %{_builddir}/remotes
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1581995005
+export SOURCE_DATE_EPOCH=1589522251
 
 %install
-export SOURCE_DATE_EPOCH=1581995005
+export SOURCE_DATE_EPOCH=1589522251
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
