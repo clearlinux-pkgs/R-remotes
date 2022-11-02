@@ -4,7 +4,7 @@
 #
 Name     : R-remotes
 Version  : 2.4.2
-Release  : 45
+Release  : 46
 URL      : https://cran.r-project.org/src/contrib/remotes_2.4.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/remotes_2.4.2.tar.gz
 Summary  : R Package Installation from Remote Repositories, Including
